@@ -1,7 +1,6 @@
 use kalosm::language::*;
 use proc_macro::TokenStream;
 use quote::ToTokens;
-use syn::parse_macro_input;
 use syn::LitStr;
 use tokio::runtime::Runtime;
 
@@ -28,9 +27,9 @@ fn try_generate_rsx(string: String) -> String {
             .with_example("Hello world", r#""hello world""#)
             .with_example("5 buttons", "button {}\nbutton {}\nbutton {}\nbutton {}\nbutton {}")
             .with_example("5 buttons with text", "button { text: \"button 1\" }\nbutton { text: \"button 2\" }\nbutton { text: \"button 3\" }\nbutton { text: \"button 4\" }\nbutton { text: \"button 5\" }")
+            .with_example("Give me buttons!!!", "button {}\nbutton {}\nbutton {}\nbutton {}\nbutton {}")
             .build();
 
-        let mut result = None;
         loop {
             let rsx_string = task.run(&string, &llm).text().await;
             if syn::parse_str::<rsx::CallBody>(&rsx_string).is_ok() {

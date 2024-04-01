@@ -1,3 +1,4 @@
+use rsx2::rsx2;
 use dioxus::prelude::*;
 
 fn main() {
