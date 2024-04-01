@@ -1,0 +1,32 @@
+[package]
+name = "rsx2"
+version = "0.1.0"
+edition = "2021"
+authors = ["Evan Almloff"]
+keywords = ["dom", "ui", "gui", "react"]
+
+[lib]
+proc-macro = true
+
+[dependencies]
+kalosm = { git = "https://github.com/floneum/floneum", features = ["metal"], version = "0.2.2" }
+proc-macro2 = { version = "1.0" }
+constcat = "0.3.0"
+convert_case = "^0.6.0"
+prettyplease = "0.2.15"
+quote = "1.0.35"
+syn = { version = "2.0.57", features = ["full", "extra-traits", "visit"] }
+dioxus-rsx = "0.5.0"
+zstd-sys = "=2.0.9"
+tokio = { version = "1.37.0", features = ["full"] }
+
+[profile.dev.build-override]
+opt-level = 3
+codegen-units = 1
+
+[profile.release.build-override]
+opt-level = 3
+codegen-units = 1
+
+[dev-dependencies]
+dioxus = { version = "0.5.0", features = ["desktop"] }
