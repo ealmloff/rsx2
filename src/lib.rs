@@ -20,7 +20,7 @@ fn try_generate_rsx(string: String) -> String {
         let llm = Llama::new_chat().await.unwrap();
 
         let constraints =
-            RegexParser::new(r#"[\w_\{\}": ]{5,200}"#).unwrap();
+            RegexParser::new(r#"\w[\w_\{\}": ]{5,200}"#).unwrap();
 
         let task = Task::builder("You are an assistant who converts natural language to rsx. Rsx is similar to HTML except it uses braces instead of starting and closing tags. It also replaces any -s with _s.")
             .with_constraints(constraints)

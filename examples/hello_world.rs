@@ -7,6 +7,6 @@ fn main() {
 
 fn app() -> Element {
     rsx2! {
-        "Give me buttons!!!"
+        "Give me buttons!"
     }
 }
