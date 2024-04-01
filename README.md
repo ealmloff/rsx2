@@ -4,6 +4,7 @@ UI is hard, we make it easier. RSX 2.0 takes your natrual language and turns it 
 
 ```rust
 use dioxus::prelude::*;
+use rsx2::rsx2;
 
 fn main() {
     launch(app);
