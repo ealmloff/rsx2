@@ -17,8 +17,10 @@ fn app() -> Element {
 }
 ```
 
-Now for the best part: **RSX 2.0 creates an unique UI every time you compile, ensuring your UI always stays fresh.** If you run into an get an error, just compile again (it might work this time)
+Now for the best part: **RSX 2.0 creates a unique UI every time you compile, ensuring your UI always stays fresh.** If you run into an get an error, just compile again (it might work this time)
 
 ## Support
 
-RSX 2.0 only supports MacOs
+RSX 2.0 supports the minimal subset of platforms and HTML: MacOS and buttons
+
+No further elements will be supported, buttons are sufficient for all use cases. If you develop on MacOS, but would like to support users on other platforms, we recommend you ship your computer to the client.

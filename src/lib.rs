@@ -20,21 +20,22 @@ fn try_generate_rsx(string: String) -> String {
         let llm = Llama::new_chat().await.unwrap();
 
         let constraints =
-            RegexParser::new(r#"\w[\w_\{\}": ]{5,200}"#).unwrap();
+            RegexParser::new(r#"(((button \{ "[\w\d][ \w\d]+" \})|("[\w\d][ \w\d]+"))\n)+"#).unwrap();
 
         let task = Task::builder("You are an assistant who converts natural language to rsx. Rsx is similar to HTML except it uses braces instead of starting and closing tags. It also replaces any -s with _s.")
             .with_constraints(constraints)
             .with_example("Hello world", r#""hello world""#)
             .with_example("5 buttons", "button {}\nbutton {}\nbutton {}\nbutton {}\nbutton {}")
-            .with_example("5 buttons with text", "button { text: \"button 1\" }\nbutton { text: \"button 2\" }\nbutton { text: \"button 3\" }\nbutton { text: \"button 4\" }\nbutton { text: \"button 5\" }")
+            .with_example("5 buttons with text", "button { \"button 1\" }\nbutton { \"button 2\" }\nbutton {\"button 3\" }\nbutton { \"button 4\" }\nbutton { \"button 5\" }")
             .with_example("Give me buttons!!!", "button {}\nbutton {}\nbutton {}\nbutton {}\nbutton {}")
             .build();
 
         loop {
-            let rsx_string = task.run(&string, &llm).text().await;
+            let rsx_string = task.run(&string, &llm).text().await.replace("</s>", "").to_string();
             if syn::parse_str::<rsx::CallBody>(&rsx_string).is_ok() {
                 break rsx_string;
             }
+            println!("Thinking: {}", rsx_string);
         }
     })
 }

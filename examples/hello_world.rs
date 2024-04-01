@@ -1,5 +1,5 @@
-use rsx2::rsx2;
 use dioxus::prelude::*;
+use rsx2::rsx2;
 
 fn main() {
     launch(app);
