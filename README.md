@@ -1,6 +1,6 @@
 # RSX 2.0
 
-UI is hard, we make it easier. RSX 2.0 takes your natrual language and turns it into code with an ad
+UI is hard, we make it easier. RSX 2.0 takes your natrual language and turns it into code with an advanced AI we call MT (monkey with a typewriter)
 
 ```rust
 use dioxus::prelude::*;
