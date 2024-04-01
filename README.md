@@ -16,7 +16,7 @@ fn app() -> Element {
 }
 ```
 
-Now for the best part: **RSX 2.0 creates an unique UI every time you compile, ensuring your UI always stays fresh.** If you run into an get an error, just compile again it might work this time.
+Now for the best part: **RSX 2.0 creates an unique UI every time you compile, ensuring your UI always stays fresh.** If you run into an get an error, just compile again (it might work this time)
 
 ## Support
 
